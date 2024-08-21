@@ -3,7 +3,7 @@ layout: ../../layouts/Project_Layout.astro
 name: Profit Plants
 description: A Shopify Store Application
 created: 2024
-image: ../profitplants.PNG
+image: /profitplants.PNG
 url: /projects/profit-plants
 
 ---

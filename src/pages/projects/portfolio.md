@@ -3,7 +3,7 @@ layout: ../../layouts/Project_Layout.astro
 name: Portfolio
 description: Web Developer Portfolio
 created: 2024
-image: ../portfolio.png
+image: /portfolio.png
 url: /projects/portfolio
 ---
 ## Overview

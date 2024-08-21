@@ -1,0 +1,126 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import Technology from '../components/Technology.astro';
+import ContLearning from '../components/ContLearning.astro'
+import Education from '../components/Education.astro'
+import About from '../components/About.astro'
+import ProjectDisplay from '../components/ProjectDisplay.astro';
+
+const projects = await Astro.glob('./projects/*.md')
+
+---
+
+<Layout title="Jayden Naylon | Central Coast Web Developer">
+	<main>
+		
+		<Card>
+			<About/>
+		</Card>
+
+		<div id="projects-container">
+			<Card
+				title='Past Projects'
+				subTitle='Take a look at my previous web development work'
+			>
+				<div>
+					{
+						projects.map(post => (
+							<ProjectDisplay
+								title={post.frontmatter.name}
+								img={post.frontmatter.image}
+								description={post.frontmatter.description}
+								href={post.frontmatter.url}/>
+						))
+					}
+				</div>
+			</Card>
+		</div>
+		
+		<Card
+			title='Technology'
+			subTitle='My choice of technoloy when developing for the web'>
+			<div id="technology-container">
+				<div>
+				<Technology
+					name='React'
+					description='Personal Favorite JavaScript Frontend Framework.'
+					icon='/react.svg'
+					iconAlt='The React Icon'
+					/>
+				<Technology
+					name='Remix'
+					description='My React Framework of choice.'
+					icon='/remix.svg'
+					iconAlt='The Remix Icon'
+					/>
+				<Technology
+					name='PostgreSQL'
+					description='My database of choice.'
+					icon='/postgresql.svg'
+					iconAlt='The PostgreSQL Icon'
+					/>
+				<Technology
+					name='Prisma'
+					description='My choice of ORM.'
+					icon='/prisma.svg'
+					iconAlt='The React Icon'
+					/>
+				<Technology
+					name='AWS'
+					description='Prefered Cloud Vendor.'
+					icon='/aws.svg'
+					iconAlt='The React Icon'
+					/>
+				<Technology
+					name='CSS'
+					description='Preference of vanilla CSS over Tailwind.'
+					icon='/css.svg'
+					iconAlt='The React Icon'
+					/>
+				</div>
+			</div>
+				<ContLearning/>
+		</Card>
+		
+		<div id="education-container">
+			<Card
+				title='Education'
+				subTitle='My past education related to Web Development'>
+				<Education/>
+			</Card>
+		</div>
+		
+	</main>
+</Layout>
+
+<style>
+	#technology-container{
+		container-name: technology-container;
+		container-type: inline-size;
+	}
+	#education-container{
+		container-name: education-container;
+		container-type: inline-size;
+	}
+	#projects-container{
+		container-name: projects-container;
+		container-type: inline-size;
+	}
+	
+	@container technology-container (width >= 698px){
+		#technology-container div{
+			display: flex;
+			flex-wrap: wrap;
+		}
+	}
+
+	@container projects-container (width >= 768px){
+		#projects-container div{
+			display: flex;
+			flex-wrap: wrap;
+		}
+	}
+	
+
+</style>

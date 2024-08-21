@@ -1,0 +1,17 @@
+---
+import Layout from "./Layout.astro"
+const {frontmatter} = Astro.props;
+import ProjectCard from "../components/ProjectCard.astro";
+---
+
+<Layout title="Projects">
+
+    <ProjectCard
+        name={frontmatter.name}
+        created={frontmatter.created}
+        description={frontmatter.description}
+        img={frontmatter.image}
+    >
+    <slot/>
+    </ProjectCard>
+</Layout> 

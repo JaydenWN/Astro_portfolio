@@ -1,0 +1,55 @@
+---
+interface Props{
+    content? : string;
+    img? : string;
+    imgAlt? : string;
+    type : 'filled' | 'outline'
+}
+
+const {content, img, type, imgAlt} = Astro.props;
+
+const buttonClass = type === 'filled' ? 'btn-filled' : 'btn-outline';
+---
+
+<button class={buttonClass}>
+    {img && <img src={img} alt={imgAlt}>}
+    {content}
+</button>
+
+<style>
+    .btn-filled{
+        background-color: var(--site-color-dark);
+        color: white;
+        border-radius: 6px;
+        border: 0px;
+        padding: 15px 15px;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition: all ease-in-out 0.2s;
+    }
+    .btn-filled:hover{
+        background-color: white;
+        color: var(--site-color-text);
+        border: 1px solid var(--site-color-dark);
+    }
+    img{
+        width: 30px;
+        height: 30px;
+    }
+    .btn-outline{
+        background-color: transparent;
+        border-radius: 6px;
+        border: 1px solid var(--site-color-dark);
+        cursor: pointer;
+        transition: all ease-in-out 0.2s;
+    }
+    
+    .btn-outline:hover{
+        background-color: var(--site-color-dark);
+        color: white;
+        border: 1px solid white;
+    }
+    .btn-outline:hover img{
+        filter: invert();
+    }
+</style>

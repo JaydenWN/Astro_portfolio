@@ -1,0 +1,88 @@
+---
+import Button from './Button.astro'
+import ContactInfo from './ContactInfo.astro'
+---
+<div id="about">
+    <img src="../me.jpg" alt="Jayden Naylon">
+    <div id="about-content">
+        <h1>Jayden Naylon</h1>
+        <p>I’m Jayden Naylon, a creative web developer from the Central Coast with a knack for building impactful e-commerce platforms, eye-catching landing pages, and sophisticated React applications.</p>
+        <p> My problem-solving ablilities shines through in every project, allowing me to deliver innovative solutions whether I’m working independently or as part of a team. I’m dedicated to bringing your digital ideas to life with precision and flair. Ready to elevate your online presence?</p>
+        <div id="about-buttons">
+            <a href="https://www.linkedin.com/in/jayden-naylon-86a750107/"><Button
+                type='outline'
+                img='../linkedin.svg'
+                imgAlt='LinkedIn Logo'>
+            </Button></a>
+            <Button
+                type='filled'
+                content="Let's get in touch"
+                >
+            </Button>
+        </div>
+    </div>
+</div>
+<ContactInfo/>
+<style>
+    #about{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    h1{
+        font-size: 3em;
+        margin-top: 35px;
+        margin-bottom: 35px;
+        text-align: center;
+    }
+    p{
+        line-height: 1.5em;
+        margin-bottom: 65px;
+    }
+    #about-buttons{
+        display: flex;
+        gap: 5px;
+        justify-content: end;
+    }
+    img{
+        margin-top: 35px;
+        border: 3px solid var(--site-color-dark);
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    a{
+       display: flex;
+    }
+    @media (width >= 768px){
+        #about{
+            padding: 0px 35px;
+            flex-direction: row;
+            gap: 60px;
+            justify-content: space-evenly;
+            margin: 45px 0px;
+        }
+        img{
+            width: 30%;
+            height: 30%;
+        }
+        #about-content{
+            width: 48%;
+        }
+        h1{
+            text-align: left;
+        }
+    }
+</style>
+
+<script>
+    const contactBtn = document.getElementsByClassName('btn-filled')
+    const contactModal = document.getElementById('contact')
+
+    contactBtn[0].addEventListener('click',()=>{
+        contactModal.showModal()
+
+    })
+
+</script>

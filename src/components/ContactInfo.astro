@@ -1,0 +1,96 @@
+---
+---
+
+<dialog id="contact">
+    <div id="dialog-container">
+    <img src="../close.svg" id="closeBtn"/>
+   
+    <p id="title">Contact Information</p>
+    
+    <div id="container">
+            <div class="item">
+             <p>Email</p>
+             <p>Phone</p>
+         </div>
+         <div class="item">
+             <p>Jaydenwnaylon@gmail.com</p>
+             <p>0411 236 383</p>
+            </div>
+        </div>
+        <p id="linkedIn">Or feel free to contact me on <a href="https://www.linkedin.com/in/jayden-naylon-86a750107/">LinkedIn.</a></p>
+        <p>Looking forward to hearing from you.</p>
+    </div>
+</dialog>
+
+<style>
+    dialog{
+        /* display: flex; */
+        border: 0px;
+        border-radius: 6px;
+        box-shadow: 0px 0px 10px black;
+        padding: 60px;
+        min-width: 25%;
+    }
+    #dialog-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+   
+    dialog p{
+        margin: 5px 0px;
+    }
+    dialog::backdrop {
+        background: black;
+        opacity: 0.6;
+
+    }
+    #contact-header{
+        display: flex;
+    }
+    img{
+        max-width: 20px;
+        filter: invert();
+        opacity: 0.4;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+    }
+    img:hover{
+        cursor: pointer;
+        opacity: 1;
+    }
+    #linkedIn{
+        margin-top: 60px;
+    }
+    #title{
+        font-family: "Yantramanav", sans-serif;
+  		font-weight: 700;
+  		font-style: normal;
+        font-size: 1.5em;
+        margin-bottom: 60px;
+        text-align: center
+    }
+    #container{
+        display: flex;
+        gap: 25px;
+    }
+    .item{
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+    .item:first-of-type{
+        font-weight: 800;
+    }
+</style>
+
+<script>
+    const contactModal = document.getElementById('contact')
+    const closeBtn = document.getElementById('closeBtn')
+   
+    closeBtn?.addEventListener('click',()=>{
+        contactModal.close()
+    })
+</script>

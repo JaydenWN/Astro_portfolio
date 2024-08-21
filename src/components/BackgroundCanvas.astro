@@ -1,0 +1,92 @@
+---
+---
+
+<div id="tsparticles"></div>
+<script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-triangles@3/tsparticles.preset.triangles.bundle.min.js" is:inline>
+</script>
+
+<script>
+    import { tsParticles } from "@tsparticles/engine";
+    let windowWidth = window.innerWidth
+    let hasInit = false
+    
+    
+        const init = async () => {
+            await loadTrianglesPreset(tsParticles);
+
+            await tsParticles.load({
+                id: "tsparticles",
+                options: {
+                preset: "triangles",
+                background: {
+                    opacity: 0
+                },
+                
+                particles:{
+                   
+                    move: {
+                        gravity: {enable: true, maxSpeed: {min: 0, max: 0.2} },
+                        speed: {min: 0, max: 0.01},
+                        warp: true
+                    },
+
+                    
+                    size:{
+                        value : {min: 0, max: 2},
+                        
+                },
+    
+                },
+                interactivity:{
+                    detectsOn: "window",
+                    events: {
+                    onHover: {
+                            enable: true,
+                            mode: "repulse"
+                    },
+                    
+
+                   }
+                }
+                },
+                
+            });
+            hasInit = true
+            }
+            
+    window.addEventListener('resize', ()=>{
+        windowWidth = window.innerWidth
+
+        if(windowWidth >= 426){
+            if(!hasInit){
+                init()
+
+            }
+        }else{
+            if(hasInit){
+                tsParticles.domItem(0)?.destroy()
+                hasInit = false;
+            }
+            
+        }
+    })
+
+    if(windowWidth >= 426){
+        init()
+    }
+
+
+          
+</script>
+
+
+<style>
+    #tsparticles{
+        position: fixed;
+        z-index: -1;
+        width: 100vw;
+        height: 100vh;
+        mix-blend-mode: soft-light;
+        opacity: 0.8;
+        }
+</style>

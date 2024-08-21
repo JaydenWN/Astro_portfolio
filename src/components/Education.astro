@@ -1,0 +1,50 @@
+---
+---
+<div id="education-list">
+    <div>
+        <h3>Tafe NSW</h3>
+        <small>2016-2017</small>
+        <p>Certificate IV in Digital Meda Technologies</p>
+    </div>
+    <div>
+        <h3>Torrens University Australia</h3>
+        <small>2024</small>
+        <p>Diploma of Information Technology</p>
+    </div>
+</div>
+<style>
+    h3{
+        font-size: 1.2em;
+    }
+    h3:first-of-type{
+        margin-top: 60px;
+    }
+    small{
+        font-size: small;
+    }
+    p{
+        margin-top: 15px;
+    }
+    p:last-of-type{
+        margin-bottom: 25px;
+    }
+    
+    @container education-container (width >= 768px){
+        #education-list{
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 50px;
+        }
+        h3:first-of-type{
+            margin-top: 0px;
+        }
+    }
+    @container education-container (width >= 768px){
+        #education-list{
+            margin-bottom: 100px;
+        }
+        #education-list div{
+            margin-top: 50px;
+        }
+    }
+</style>

@@ -1,0 +1,192 @@
+---
+
+
+
+---
+<div id="navbar-container">
+    <nav>
+        
+            <div id="navbar-content">
+                <a href="/">
+                <div id="site-title">
+                    <div>JN.</div>
+                    <div>Central Coast's Web Developer</div>
+                </div>
+                </a>
+                <button id="navbar-hamburger" aria-label="Mobile Menu Button"><img src="../burger.svg" id="burgerImg" alt="Mobile Navigation Menu Button"></button>
+            </div>
+        
+        <ul id="nav-links">
+            <li><a href="https://www.linkedin.com/in/jayden-naylon-86a750107/">LinkedIn</a></li>
+            <li><a href="https://github.com/JaydenWN"> GitHub</a></li>
+            <li><a href="https://www.upwork.com/freelancers/~01a8e18343d83b4af9">UpWork</a></li>
+        </ul>
+    </nav>
+</div>
+
+<style>
+    @keyframes mobileItemsOpen {
+        from {
+            transform: translateY(-138px);
+            opacity: 0;
+        }
+        to{
+            transform: translateY(0px);
+            opacity: 1;
+        }        
+    }
+    @keyframes mobileItemsClose {
+        from{
+            transform: translateY(0px);
+            opacity: 1;
+        }        
+        to {
+            transform: translateY(-138px);
+            opacity: 0;
+        }
+    }
+    #navbar-container{
+        container-type: inline-size;
+        container-name: navbar-container;
+    }
+    nav{
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        align-items: center;
+        color: white;
+        position: sticky;
+    }
+    #navbar-content{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    #navbar-content a{
+        text-decoration: none;
+    }
+    #site-title{
+        cursor: pointer;
+    }
+    #site-title div{
+        color: white;
+    }
+    
+    #site-title :first-child{
+        font-family: "Yantramanav", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 2em;
+    }
+    #navbar-hamburger{
+        background-color: transparent;
+        border: 1px solid white;
+        border-radius: 6px;
+        color: white;
+        width: 40px;
+        height: 40px;
+        display: none;
+    }
+    #navbar-hamburger img{
+        width: 100%;
+        height: 100%;
+    }
+    #nav-links{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+
+    }
+    #nav-links li{
+        color: white;
+        
+    }
+    #nav-links a{
+        text-decoration: none;
+        color: white;
+        display: block;
+        background-color: inherit;
+    }
+    /* Mobile Sizes */
+    @container navbar-container (width <= 440px){
+        nav{
+            flex-direction: column;
+            align-items: start;
+            padding: 0px;
+            
+        }
+        
+        #navbar-content{
+            padding: 10px;
+            width: calc(100% - 20px);
+            background-color: var(--site-dark-text);
+        }
+        #nav-links{
+            flex-direction: column;
+            width: 100%;
+            gap: 0px;
+            display: none;
+            position: absolute;
+            top: 68px;
+            z-index: -1;
+            background-color: #242424;
+        }
+        #nav-links li{
+            padding: 15px;
+            background-color: #242424;
+            animation: mobileItemsOpen 0.2s ease-out;
+        }
+        #nav-links li:nth-of-type(odd){
+            background-color: var(--site-dark-text);
+            
+        }
+        #navbar-hamburger{
+            display: inline;
+        }
+    }
+    /* Tablet Size */
+    @container navbar-container (width >= 768px){
+        nav{
+            padding: 40px 40px;
+        }
+        #nav-links{
+            display: flex;
+            gap: 40px;
+        }
+    }
+</style>
+
+<script>
+    const burgerButton = document.getElementById("navbar-hamburger");
+    const siteNavigation = document.getElementById("nav-links")
+    const burgerImg = document.getElementById('burgerImg')
+
+    const lis = Array.from(siteNavigation.children)
+
+
+    burgerButton?.addEventListener('click', () => {
+        const currentDisplay = window.getComputedStyle(siteNavigation).display;
+        
+        if(currentDisplay === 'none'){
+            siteNavigation.style.display = 'flex';
+            burgerImg.src = "../close.svg"
+            siteNavigation.style.animation ="mobileItemsOpen 0.3s ease-in"
+            lis.forEach(e => {
+                e.style.animation = "mobileItemsOpen 0.3s ease-in"
+            });
+
+        }else{
+            siteNavigation.style.animation ="mobileItemsClose 0.3s ease-in"
+            burgerImg.src = "../burger.svg"
+
+            lis.forEach(e => {
+                e.style.animation = "mobileItemsClose 0.3s ease-in"
+            });
+
+            setTimeout(()=>{
+                siteNavigation.style.display = 'none'
+            }, 300)
+        }
+        
+    });
+</script>

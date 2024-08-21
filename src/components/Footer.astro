@@ -1,0 +1,57 @@
+---
+---
+
+<footer>
+    <div id="footer-links">
+        <p>Find me on</p>
+        <ul>
+            <li><a href="https://www.linkedin.com/in/jayden-naylon-86a750107/">LinkedIn</a></li>
+            <li><a href="https://github.com/JaydenWN">Github</a></li>
+            <li><a href="https://www.upwork.com/freelancers/~01a8e18343d83b4af9">UpWork</a></li>
+        </ul>
+    </div>
+    <p>	&#169; Jayden Naylon 2024</p>
+</footer>
+
+
+<style>
+    footer{
+        background-color: #463F3A;
+        min-height: 15vh;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        padding: 25px;
+        justify-content: space-between;
+        
+    }
+    footer p, a{
+        color: white;
+        filter: brightness(0.66)
+    }
+    #footer-links p{
+        font-family: "Yantramanav", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+    }
+    #footer-links ul{
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    #footer-links a{
+        text-decoration: none;
+    }
+
+    footer p:last-of-type{
+        align-self: center;
+        
+    }
+
+    @media (width >= 768px) {
+        footer{
+            padding: 50px;
+        }
+    }
+</style>

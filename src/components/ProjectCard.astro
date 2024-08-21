@@ -1,0 +1,197 @@
+---
+interface Props{
+    name: string;
+    created: string;
+    description: string;
+    img: string;
+}
+
+const {name, created, description, img} = Astro.props;
+---
+
+
+<div id="project-card">
+    <div id="project-header">
+       
+        <h1 id="mobile-title">{name}</h1>
+        <img src={img} alt={`${name} featured image`}>
+        <div id="header-content">
+            <h1>{name}</h1>
+            <p>{description}</p>
+            <small>{created}</small>
+        </div>
+    </div>
+</div>
+
+<main>
+    <slot />
+</main>
+
+
+<style>
+    main{
+        background-color: white;
+		box-shadow: 0px 0px 10px black;
+		border-radius: 6px;
+		padding: 25px;
+		margin: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #project-card{
+		background-color: white;
+		box-shadow: 0px 0px 10px black;
+		border-radius: 6px;
+		padding: 25px;
+		margin: 10px;
+        container-type: inline-size;
+        container-name: project-container;
+        z-index: -1;
+	}
+
+    #header-content h1{
+        display: none;
+    }
+
+    #project-card h1{
+        text-align: center;
+        font-size: 2em;
+        margin: 25px 0px;
+    }
+
+    #header-content small{
+        display: block;
+        text-align: center;
+        font-size: small;
+        margin-top: 15px
+    }
+    
+    #project-card p{
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    #project-card img{
+        width: 100%;
+        border-radius: 6px;
+    }
+
+    main :global(img){
+        border-radius: 6px;
+        max-width: 100%;
+    }
+
+    main :global(p:has(img)){
+        display: flex;
+        justify-content: center;
+    }
+    
+    main :global(h2){
+        margin-top: 25px;
+        font-size: 1.5em;
+        text-align: center;
+    }
+    
+    main :global(h2:first-of-type){
+        margin-top: 0px;
+    }
+
+    main :global(h3, h4, h5){
+        font-size: 1.2em;
+    }
+
+    main :global(ul){
+        margin-left: 10%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    main :global(li){
+       list-style-type: circle;
+        
+    }
+
+    main :global(p){
+        line-height: 2em;
+    }
+
+    #project-header{
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    @container project-container (width >= 628px){
+        #project-header{
+            flex-direction: row;
+            align-items: center;
+            gap: 25px;
+        }
+        #project-header img{
+            order:0;
+            max-width: 40%;
+        }
+        #project-header h1, small, p{
+            order: 1;
+        }
+        #mobile-title{
+            display: none;
+        }
+        #header-content{
+            width: 60%;
+        }
+        #header-content h1, small{
+            display: block;
+            text-align: center;
+        }
+        #header-content h1{
+            font-size: 3em;
+        }
+
+        
+    }
+    @media (width >= 768px){
+		#project-card, main{
+			margin: 10px 20px;
+            padding: 75px 100px;
+            
+		}
+
+        main :global(h2){
+            margin-bottom: 25px;
+            margin-top: 50px;
+        }
+
+        main :global(h2:first-of-type){
+            margin-top: 0px;
+        }
+
+       
+	}
+	@media (width >= 1024px){
+		#project-card, main{
+			margin: 50px 10%;
+		}
+        main{
+            padding: 100px 10%;
+        }
+        main :global(img){
+        border-radius: 6px;
+        max-width: 60%;
+        margin: 50px;
+    }
+	}
+	@media (width >= 1444px){
+		#project-card, main{
+			margin: 50px 20%;
+		}
+        main{
+            /* padding: 100px; */
+            gap: 35px;
+        }
+	}
+
+</style>
